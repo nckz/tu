@@ -19,27 +19,37 @@ based cli tools on any docker ready host e.g.:
 
 ```bash
 $ tu ls
-$ ni .
-$ ni ~/.my_hidden_file
-$ ni ~/my_softlinked_file
-$ ni ../../my_dir
-$ ni ../../my_softlinked_dir
-$ ni my_new_file
+$ tu apt-cache search python3-gnu
+$ tu pandoc README.md
 ```
 
-## Packages
-This version of vim uses the following packages:
+The launcher script mounts the CWD into a working path in the container; the
+container is run with the calling user id so that the command can run within
+the intended scope.
 
-* [Ale](https://github.com/dense-analysis/ale/blob/master/README.md)
-    * python
-        * black formatting on save
-        * flake8 linter
-    * bash
-        * shellcheck
-    * remove_trailing_lines
-* [CtrlP](https://github.com/kien/ctrlp.vim)
-* [Solarized](https://ethanschoonover.com/solarized/)
-* `ghmarkdown` syntax highlighting
+## Packages
+This version has the following tools installed:
+
+*    cbm
+*    cloc
+*    curl
+*    git
+*    htop
+*    iperf
+*    jq
+*    less
+*    net-tools
+*    pandoc
+*    python3
+*    python3-pip
+*    screen
+*    snapd
+*    speedtest-cli
+*    texlive-xetex
+*    vim
+*    wget
+*    yq
+
 
 # Installation
 To install, issue the following command:
