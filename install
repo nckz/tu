@@ -1,0 +1,23 @@
+#!/bin/bash
+# Install into a common location
+# Author: Nick Zwart
+# Date: 2019dec31
+
+set -euo pipefail
+
+####################################################################### INCLUDE
+# assume config is in the same dir
+source "$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"/config.bash ; config
+
+
+########################################################################## MAIN
+# check for existing hook
+if [ -f "${CMD_DEST}" ]; then
+    echo "A script named ${CMD_SRC} is already installed:"
+    echo "    ${CMD_DEST}"
+    echo "Install aborted."
+    exit 1
+fi
+
+# link the script
+cp -v $CMD_SRC $CMD_DEST

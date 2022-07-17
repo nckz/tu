@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# volume mounted working directory
+WORKDIR=/workdir
+
+# move to the vim working directory
+cd ${WORKDIR}
+
+# start the given command
+$@
