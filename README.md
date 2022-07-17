@@ -21,6 +21,7 @@ based cli tools on any docker ready host e.g.:
 $ tu ls
 $ tu apt-cache search python3-gnu
 $ tu pandoc README.md
+$ ARGS="-p 1313:1313 --hostname klaatu.local -it" tu hugo server --bind '0.0.0.0' --baseURL "http://$(hostname)/"
 ```
 
 The launcher script mounts the CWD into a working path in the container; the
