@@ -6,6 +6,10 @@
 
 set -eo pipefail
 
+########################################################################### CLI
+AS_ROOT=${AS_ROOT:-}
+
+
 ####################################################################### INCLUDE
 # TODO: inject these as part of the install
 # make the docker tags for this project
@@ -20,8 +24,12 @@ DOCKER_REF="${DOCKER_ACC}/${DOCKER_REP}"
 # directory path.
 MNT=$('pwd')  # by default use the current working dir
 
+# allow the internal container user to be root
+AS_USER="--user $(id -u):$(id -g)"
+[ -n "${AS_ROOT}" ] && AS_USER="--user 0:0"
+
 # if no args are given then mount the current directory
-echo "CWD: ${MNT}, CMD: $@"
+echo "USER: ${AS_USER}, CWD: ${MNT}, CMD: $@"
 
 # change detach keys from ctrl-p to something less obtrusive to vim
-docker run --rm --detach-keys="ctrl-@" -v ${MNT}:/workdir "${DOCKER_REF}" "$@"
+docker run --rm --detach-keys="ctrl-@" -v ${MNT}:/workdir ${AS_USER} "${DOCKER_REF}" "$@"
