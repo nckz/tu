@@ -8,6 +8,7 @@ RUN apt-get update && apt-get --no-install-recommends --yes install \
     curl \
     git \
     htop \
+    hugo \
     iperf \
     jq \
     less \
@@ -19,7 +20,16 @@ RUN apt-get update && apt-get --no-install-recommends --yes install \
     snapd \
     speedtest-cli \
     texlive-xetex \
+    tree \
     vim \
+    wget \
+    && rm -rf /var/lib/apt/lists/*
+
+# archive.ismrm.org
+RUN pip3 install \
+    beautifulsoup4 \
+    joblib \
+    lxml \
     wget
 
 # manual installs

@@ -8,6 +8,7 @@ set -eo pipefail
 
 ########################################################################### CLI
 AS_ROOT=${AS_ROOT:-}
+ARGS=${ARGS:-}
 
 
 ####################################################################### INCLUDE
@@ -32,4 +33,4 @@ AS_USER="--user $(id -u):$(id -g)"
 echo "USER: ${AS_USER}, CWD: ${MNT}, CMD: $@"
 
 # change detach keys from ctrl-p to something less obtrusive to vim
-docker run --rm --detach-keys="ctrl-@" -v ${MNT}:/workdir ${AS_USER} "${DOCKER_REF}" "$@"
+docker run ${ARGS} --rm --detach-keys="ctrl-@" -v ${MNT}:/workdir ${AS_USER} "${DOCKER_REF}" "$@"
