@@ -44,4 +44,4 @@ if [ "$@" = "${TERM}" ]; then
 fi
 
 # change detach keys from ctrl-p to something less obtrusive to vim
-docker run ${ARGS} --rm ${INTERACTIVE} --detach-keys="ctrl-@" -v ${MNT}:/workdir ${AS_USER} "${DOCKER_REF}" "$@"
+time docker run ${ARGS} --rm ${INTERACTIVE} --detach-keys="ctrl-@" -v ${MNT}:/workdir ${AS_USER} "${DOCKER_REF}" "$@"
