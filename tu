@@ -38,7 +38,7 @@ echo "USER: ${AS_USER}, CWD: ${MNT}, CMD: $@"
 
 # set interactive mode
 INTERACTIVE=""
-if [ "$@" = "${TERM}" ]; then
+if [ "$1" = "${TERM}" ]; then
     INTERACTIVE="-it"
     echo "Interactive Shell"
 fi
