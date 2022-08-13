@@ -1,28 +1,46 @@
 FROM ubuntu:kinetic
 MAINTAINER Nick Zwart <dr.nicky.z@gmail.com>
 
-# install all desired tools
+# BASIC TOOLS
 RUN apt-get update && apt-get --no-install-recommends --yes install \
+    binutils \
+    build-essential \
     cbm \
     cloc \
     curl \
     git \
     htop \
-    hugo \
     iperf \
     jq \
     less \
     net-tools \
+    nmap \
     pandoc \
     python3 \
     python3-pip \
+    python3-dev \
     screen \
     snapd \
     speedtest-cli \
-    texlive-xetex \
     tree \
     vim \
     wget \
+    && rm -rf /var/lib/apt/lists/*
+
+# BLOG
+RUN apt-get update && apt-get --no-install-recommends --yes install \
+    hugo \
+    && rm -rf /var/lib/apt/lists/*
+
+# LATEX
+RUN apt-get update && apt-get --no-install-recommends --yes install \
+    texlive-xetex \
+    && rm -rf /var/lib/apt/lists/*
+
+# ISMRM
+RUN apt-get update && apt-get --no-install-recommends --yes install \
+    libenchant-2-2 \
+    libenchant-2-dev \
     && rm -rf /var/lib/apt/lists/*
 
 # archive.ismrm.org
@@ -30,7 +48,13 @@ RUN pip3 install \
     beautifulsoup4 \
     joblib \
     lxml \
-    wget
+    matplotlib \
+    numpy \
+    pillow \
+    pyenchant \
+    stop-words \
+    wget \
+    wordcloud
 
 # manual installs
 ARG VERSION=v4.2.0
