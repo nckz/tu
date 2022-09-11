@@ -24,3 +24,5 @@
     rmuntracked = clean -d -f
     showuntracked = ls-files --others --exclude-standard
     patch = whatchanged -m -n 1 -p
+[safe]
+    directory = /workdir
